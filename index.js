@@ -12,13 +12,17 @@ sendMail.onclick = () => {
     };
     var serID = "service_prpcxjj";
     var tempID = "template_ne6458j";
-    emailjs.send(serID, tempID, params).then(res => {
-      // Xử lý thêm tin nhắn vào
-      lirep.innerText = `${messages.value}`;
-      lirep.style = "display:block";
-      messages.value = "";
-    }).catch();
-
-
-    
+    if (messages.value == "") {
+        alert("Nhập số điện thoại vào đi bé <3")
+    } else {
+        emailjs
+          .send(serID, tempID, params)
+          .then((res) => {
+            // Xử lý thêm tin nhắn vào
+            lirep.innerText = `${messages.value}`;
+            lirep.style = "display:block";
+            messages.value = "";
+          })
+          .catch();
+    }
 }
